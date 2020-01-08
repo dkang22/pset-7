@@ -2,7 +2,7 @@ function commonEnd(a, b) {
   if (!a || a.length === 0 || !b || b.length === 0) {
     return false;
   }
-
+//initial commit
   // write your code here
 }
 
