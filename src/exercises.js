@@ -1,23 +1,36 @@
 function commonEnd(a, b) {
-  if (!a || a.length === 0 || !b || b.length === 0) {
-    return false;
-  }
-  firstA = a[0];
-  firstB = b[0];
-  lastA = a[a.length - 1];
-  lastB = b[b.length - 1];
+    if (!a || a.length === 0 || !b || b.length === 0) {
+        return false;
+    }
 
-  if (firstA === firstB) {
-      return true;
-  } else if (lastA === lastB) {
-      return true;
-  } else {
-    return false;
-  }
+    firstA = a[0];
+    firstB = b[0];
+    lastA = a[a.length - 1];
+    lastB = b[b.length - 1];
+
+    if (firstA === firstB) {
+        return true;
+    } else if (lastA === lastB) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function endsMeet(values, n) {
-  // write your code here
+    if (!values || values >= n) {
+        return false;
+    }
+
+    const storeValues = values;
+    let newArray = [];
+    let valuesLength = values.length;
+    let firstElements = values.splice(0, n-1);
+    values = storeValues;
+    let lastElements = values.splice(valuesLength-n, valuesLength-1);
+
+    return firstElements;
+    return lastElements;
 }
 
 function difference(numbers) {
