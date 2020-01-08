@@ -2,8 +2,18 @@ function commonEnd(a, b) {
   if (!a || a.length === 0 || !b || b.length === 0) {
     return false;
   }
-//initial commit
-  // write your code here
+  firstA = a[0];
+  firstB = b[0];
+  lastA = a[a.length - 1];
+  lastB = b[b.length - 1];
+
+  if (firstA === firstB) {
+      return true;
+  } else if (lastA === lastB) {
+      return true;
+  } else {
+    return false;
+  }
 }
 
 function endsMeet(values, n) {
