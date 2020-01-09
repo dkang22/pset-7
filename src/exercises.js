@@ -18,19 +18,27 @@ function commonEnd(a, b) {
 }
 
 function endsMeet(values, n) {
-    if (!values || values >= n) {
-        return false;
-    }
-
-    const storeValues = values;
     let newArray = [];
-    let valuesLength = values.length;
-    let firstElements = values.splice(0, n-1);
-    values = storeValues;
-    let lastElements = values.splice(valuesLength-n, valuesLength-1);
 
-    return firstElements;
-    return lastElements;
+    if (!values || values.length < n || !Number.isInteger(n) || n < 0) {
+        return newArray;
+    } else {
+        if (n === 0){
+            return values;
+        } else {
+            for (let x = 0; x < n; x++) {
+                if (values[x] !== undefined) {
+                    newArray.push(values[x]);
+                }
+            }
+            for (let x = n; x > 0; x--) {
+                if (values[values.length - x] !== undefined) {
+                    newArray.push(values[values.length - x]);
+                }
+            }
+            return newArray;
+        }
+    }
 }
 
 function difference(numbers) {
