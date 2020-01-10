@@ -53,17 +53,16 @@ function difference(numbers) {
 }
 
 function max(number) {
-    if (!number || number.length % 2 !== 0 || number.length < 3 || number.some(isNaN)){
+    if (!number || number.length % 2 === 0 || number.length < 3 || number.some(isNaN)){
         return undefined;
     } else {
         let newArray = [];
-        let subArray = [];
         let first = number[0];
         newArray.push(first);
         let half = Math.floor(number.length/2);
         let middle = number[half];
         newArray.push(middle);
-        let end = number[number.length -1];
+        let end = number[number.length - 1];
         newArray.push(end);
         let max = Number(Math.max.apply(null, number));
         return max;
