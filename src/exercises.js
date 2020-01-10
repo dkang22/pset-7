@@ -42,11 +42,32 @@ function endsMeet(values, n) {
 }
 
 function difference(numbers) {
-  // write your code here
+    if (!numbers || numbers.includes(NaN) || numbers.length < 1){
+        return undefined;
+    } else {
+        let max = Number(Math.max.apply(null, numbers));
+        let min = Number(Math.min.apply(null, numbers));
+        let difference = max - min;
+        return difference;
+    }
 }
 
 function max(number) {
-  // write your code here
+    if (!number || number.length % 2 !== 0 || number.length < 3 || number.includes(NaN)){
+        return undefined;
+    } else {
+        let newArray = [];
+        let subArray = [];
+        let first = number[0];
+        newArray.push(first);
+        let half = Math.floor(number.length/2);
+        let middle = number[half];
+        newArray.push(middle);
+        let end = number[number.length -1];
+        newArray.push(end);
+        let max = Number(Math.max.apply(null, number));
+        return max;
+    }
 }
 
 function middle(values) {
