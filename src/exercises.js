@@ -42,7 +42,7 @@ function endsMeet(values, n) {
 }
 
 function difference(numbers) {
-    if (!numbers || numbers.includes(NaN) || numbers.length < 1){
+    if (!numbers || numbers.some(isNaN) || numbers.length < 1){
         return undefined;
     } else {
         let max = Number(Math.max.apply(null, numbers));
@@ -53,7 +53,7 @@ function difference(numbers) {
 }
 
 function max(number) {
-    if (!number || number.length % 2 !== 0 || number.length < 3 || number.includes(NaN)){
+    if (!number || number.length % 2 !== 0 || number.length < 3 || number.some(isNaN)){
         return undefined;
     } else {
         let newArray = [];
