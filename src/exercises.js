@@ -57,20 +57,28 @@ function max(number) {
         return undefined;
     } else {
         let newArray = [];
-        let first = number[0];
-        newArray.push(first);
+        newArray.push(number[0]);
         let half = Math.floor(number.length/2);
-        let middle = number[half];
-        newArray.push(middle);
+        newArray.push(number[half]);
         let end = number[number.length - 1];
         newArray.push(end);
-        let max = Number(Math.max.apply(null, number));
+        let max = Number(Math.max.apply(null, newArray));
         return max;
     }
 }
 
 function middle(values) {
-  // write your code here
+    if (!values || values.length % 2 === 0 || values.length < 3){
+        return [];
+    } else {
+        let newArray = [];
+        let middle = Math.floor(values.length/2);
+        console.log(values[middle-1]);
+        console.log(values[middle]);
+        console.log(values[middle+1]);
+        newArray.push(values[middle-1], values[middle], values[middle+1]);
+        return newArray;
+    }
 }
 
 function increasing(numbers) {
