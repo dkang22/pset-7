@@ -20,7 +20,7 @@ function commonEnd(a, b) {
 function endsMeet(values, n) {
     let newArray = [];
 
-    if (!values || values.length < n || !Number.isInteger(n) || n < 0) {
+    if (!values || values.length < n || !(n % 1 === 0) || n <= 0) {
         return newArray;
     } else {
         if (n === 0){
@@ -73,24 +73,123 @@ function middle(values) {
     } else {
         let newArray = [];
         let middle = Math.floor(values.length/2);
-        console.log(values[middle-1]);
-        console.log(values[middle]);
-        console.log(values[middle+1]);
         newArray.push(values[middle-1], values[middle], values[middle+1]);
         return newArray;
     }
 }
 
 function increasing(numbers) {
-  // write your code here
+    let flag = false;
+    if (!numbers || numbers.length < 3 || numbers.some(isNaN)) {
+        flag = false;
+        return false;
+    } else {
+        let first;
+        let second;
+        let third;
+        let diff1;
+        let diff2;
+        for (let x = 0; x < numbers.length -2; x++) {
+            first = numbers[x];
+            second = numbers[x + 1];
+            third = numbers[x + 2];
+            diff1 = second - first;
+            diff2 = third - second;
+            if (diff1 === 1 && diff2 === 1) {
+                flag = true;
+                return true;
+            } else {
+                //intentially null
+            }
+        }
+
+        if(flag === true) {
+            return true;
+        } else if (flag === false){
+            return false;
+        } else {
+            //intentially null
+        }
+    }
 }
 
 function everywhere(values, x) {
-  // write your code here
+    let flag;
+    if (!values || values.length < 1 || !x) {
+        return false;
+    } else {
+        for (let y = 0; y < values.length - 1; y++){
+            if (values[y].isNaN) {
+                flag = false;
+                return false;
+            }
+        }
+        let first;
+        let second;
+        let third;
+        for (let i = 0; i < values.length - 1; i++) {
+            if (i === 0) {
+                if (values[i] === x) {
+                    flag = true;
+                } else if (values[i + 1] === x) {
+                    flag = true;
+                } else {
+                    flag = false;
+                    return false;
+                }
+            } else if (i === (values.length - 1)) {
+                if (values[i] === x) {
+                    flag = true;
+                } else if (values[i - 1]) {
+                    flag = true;
+                } else {
+                    flag = false;
+                    return false;
+                }
+            } else {
+                second = values[i];
+                first = values[i - 1];
+                third = values[i + 1];
+
+                if (second === x) {
+                    flag = true;
+                } else if (first === x) {
+                    flag = true;
+                } else if (third === x) {
+                    flag = true;
+                } else {
+                    flag = false;
+                    return false;
+                }
+            }
+        }
+
+        if (flag === false ) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
 
 function consecutive(numbers) {
-  // write your code here
+    if (!numbers || numbers.length < 3 || numbers.some(isNaN)) {
+        return false;
+    } else {
+        let first;
+        let second;
+        let third;
+        for (let x = 0; x < numbers.length - 2; x++) {
+            first = numbers[x];
+            second = numbers[x + 1];
+            third = numbers[x + 2];
+            if (first % 2 === 0 && second % 2 === 0 && third % 2 === 0) {
+                return true;
+            } else if (first % 2 === 1 && second % 2 === 1 && third % 2 === 1) {
+                return true;
+            }
+        }
+    }
 }
 
 function balance(numbers) {
@@ -101,6 +200,12 @@ function balance(numbers) {
 function clumps(values) {
   // write your code here
 }
+
+
+
+// target: 7
+// [ 1, 7, 3, 7, 6, 9, 7 ] YES
+// [ 1, 7, 3, 7, 6, 9, 8 ] NO
 
 /*
  * Exports all functions for use in external grader.js file. Do not modify.
