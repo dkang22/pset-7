@@ -173,7 +173,9 @@ function everywhere(values, x) {
 }
 
 function consecutive(numbers) {
+    let flag;
     if (!numbers || numbers.length < 3 || numbers.some(isNaN)) {
+        flag = false;
         return false;
     } else {
         let first;
@@ -184,17 +186,39 @@ function consecutive(numbers) {
             second = numbers[x + 1];
             third = numbers[x + 2];
             if (first % 2 === 0 && second % 2 === 0 && third % 2 === 0) {
+                flag = true;
                 return true;
             } else if (first % 2 === 1 && second % 2 === 1 && third % 2 === 1) {
+                flag = true;
                 return true;
             }
+        }
+        if (flag === true) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
 
 function balance(numbers) {
-  // write your code here
-  console.log("test");
+    let flag;
+    let sum;
+    if (!numbers || numbers.length < 2 || numbers.some(isNaN)) {
+        flag = false;
+        return false;
+    } else {
+        for (let y = 0; y < numbers.length - 1; y++){
+            if (numbers[y] % 1 !==  0) {
+                flag = false;
+                return false;
+            }
+        }
+        for (let x = 0; x < numbers.length - 1; x++){
+            sum += numbers[x];
+        }
+        console.log(sum);
+    }
 }
 
 function clumps(values) {
