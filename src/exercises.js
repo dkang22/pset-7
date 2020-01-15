@@ -89,12 +89,14 @@ function increasing(numbers) {
         let third;
         let diff1;
         let diff2;
+
         for (let x = 0; x < numbers.length -2; x++) {
             first = numbers[x];
             second = numbers[x + 1];
             third = numbers[x + 2];
             diff1 = second - first;
             diff2 = third - second;
+
             if (diff1 === 1 && diff2 === 1) {
                 flag = true;
                 return true;
@@ -181,10 +183,12 @@ function consecutive(numbers) {
         let first;
         let second;
         let third;
+
         for (let x = 0; x < numbers.length - 2; x++) {
             first = numbers[x];
             second = numbers[x + 1];
             third = numbers[x + 2];
+
             if (first % 2 === 0 && second % 2 === 0 && third % 2 === 0) {
                 flag = true;
                 return true;
@@ -193,6 +197,7 @@ function consecutive(numbers) {
                 return true;
             }
         }
+
         if (flag === true) {
             return true;
         } else {
@@ -203,26 +208,72 @@ function consecutive(numbers) {
 
 function balance(numbers) {
     let flag;
-    let sum;
+    let sum = 0;
+    let halfSum;
+    let balanceSum = 0;
+
     if (!numbers || numbers.length < 2 || numbers.some(isNaN)) {
         flag = false;
         return false;
     } else {
+/*
         for (let y = 0; y < numbers.length - 1; y++){
             if (numbers[y] % 1 !==  0) {
                 flag = false;
                 return false;
             }
         }
-        for (let x = 0; x < numbers.length - 1; x++){
+*/
+        for (let x = 0; x < numbers.length; x++){
             sum += numbers[x];
         }
-        console.log(sum);
+
+        halfSum = sum / 2;
+
+        if(sum % 2 === 1) {
+            flag = false;
+            return false;
+        }
+
+        for (let z = 0; z < numbers.length - 1; z++) {
+            balanceSum += numbers[z];
+            if (balanceSum === halfSum) {
+                flag = true;
+                return true;
+            }
+        }
+
+        if (flag === true) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
 function clumps(values) {
-  // write your code here
+    let clumps = 0;
+    if (!values) {
+        return undefined;
+    } else {
+        let target;
+        let surroundingTarget;
+
+        for (let x = 0; x < values.length - 1; x++){
+            target = values[x];
+            surroundingTarget = values[x + 1];
+
+            if (target === surroundingTarget) {
+                clumps++;
+            }
+
+            surroundingTarget = x + 1;
+            while (target === surroundingTarget) {
+                target =
+            }
+        }
+        return clumps;
+    }
 }
 
 
