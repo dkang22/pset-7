@@ -1,5 +1,5 @@
 function commonEnd(a, b) {
-    if (!a || a.length === 0 || !b || b.length === 0) {
+    if (!a || a.length < 1 || !b || b.length < 1) {
         return false;
     }
 
@@ -31,11 +31,13 @@ function endsMeet(values, n) {
                     newArray.push(values[x]);
                 }
             }
+
             for (let x = n; x > 0; x--) {
                 if (values[values.length - x] !== undefined) {
                     newArray.push(values[values.length - x]);
                 }
             }
+
             return newArray;
         }
     }
@@ -48,6 +50,7 @@ function difference(numbers) {
         let max = Number(Math.max.apply(null, numbers));
         let min = Number(Math.min.apply(null, numbers));
         let difference = max - min;
+
         return difference;
     }
 }
@@ -63,6 +66,7 @@ function max(number) {
         let end = number[number.length - 1];
         newArray.push(end);
         let max = Number(Math.max.apply(null, newArray));
+
         return max;
     }
 }
@@ -74,6 +78,7 @@ function middle(values) {
         let newArray = [];
         let middle = Math.floor(values.length/2);
         newArray.push(values[middle-1], values[middle], values[middle+1]);
+
         return newArray;
     }
 }
@@ -89,6 +94,13 @@ function increasing(numbers) {
         let third;
         let diff1;
         let diff2;
+
+        for (let i = 0; i < numbers.length - 1; i++) {
+            if (Number.isInteger(numbers[i]) === false){
+                flag = false;
+                return false;
+            }
+        }
 
         for (let x = 0; x < numbers.length -2; x++) {
             first = numbers[x];
@@ -126,9 +138,11 @@ function everywhere(values, x) {
                 return false;
             }
         }
+
         let first;
         let second;
         let third;
+
         for (let i = 0; i < values.length - 1; i++) {
             if (i === 0) {
                 if (values[i] === x) {
@@ -166,7 +180,7 @@ function everywhere(values, x) {
             }
         }
 
-        if (flag === false ) {
+        if (flag === false) {
             return false;
         } else {
             return true;
@@ -180,6 +194,13 @@ function consecutive(numbers) {
         flag = false;
         return false;
     } else {
+        for (let i = 0; i < numbers.length - 1; i++) {
+            if (Number.isInteger(numbers[i]) === false){
+                flag = false;
+                return false;
+            }
+        }
+
         let first;
         let second;
         let third;
@@ -216,14 +237,13 @@ function balance(numbers) {
         flag = false;
         return false;
     } else {
-/*
-        for (let y = 0; y < numbers.length - 1; y++){
-            if (numbers[y] % 1 !==  0) {
+        for (let i = 0; i < numbers.length - 1; i++) {
+            if (Number.isInteger(numbers[i]) === false){
                 flag = false;
                 return false;
             }
         }
-*/
+
         for (let x = 0; x < numbers.length; x++){
             sum += numbers[x];
         }
@@ -253,34 +273,38 @@ function balance(numbers) {
 
 function clumps(values) {
     let clumps = 0;
+    let flag;
+    let lastIndexOfClump;
+
     if (!values) {
-        return undefined;
+        return -1;
     } else {
         let target;
         let surroundingTarget;
 
-        for (let x = 0; x < values.length - 1; x++){
-            target = values[x];
-            surroundingTarget = values[x + 1];
+        for (let x = 0; x < values.length - 1; x++) {
+            let counter1 = x;
+            let counter2 = x + 1;
+            target = values[counter1];
+            surroundingTarget = values[counter2];
 
             if (target === surroundingTarget) {
-                clumps++;
-            }
+                while (target === surroundingTarget) {
+                    target = values[counter1++];
+                    surroundingTarget = values[counter2++];
+                }
 
-            surroundingTarget = x + 1;
-            while (target === surroundingTarget) {
-                target =
+                flag = true;
+                lastIndexOfClump = counter1 - 1;
+                x = lastIndexOfClump;
+                clumps++;
+            } else {
+                //restart the for loop
             }
         }
         return clumps;
     }
 }
-
-
-
-// target: 7
-// [ 1, 7, 3, 7, 6, 9, 7 ] YES
-// [ 1, 7, 3, 7, 6, 9, 8 ] NO
 
 /*
  * Exports all functions for use in external grader.js file. Do not modify.
